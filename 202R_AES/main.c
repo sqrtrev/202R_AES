@@ -1,16 +1,18 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
 #define BLOCK_SIZE 16
+#define ROUND 9
+#include <stdio.h>
+#include "round.h"
+#include "key.h"
+#include "padding.h"
 
-volatile char* plaintext;
-volatile char* result;
-void readfile(const char*);
-
+void readFile(const char*, char*);
 
 int main(int argc, char *argv[]) {
 	const char* key;
+	char* plaintext;
+	char* result;
 	
-
 	if (argc != 3) 
 		perror("Usage: ./aes filename key");
 	
@@ -19,14 +21,14 @@ int main(int argc, char *argv[]) {
 	
 	key = argv[2];
 
-	readfile(argv[1], plaintext);
+	readFile(argv[1], plaintext);
 
 
 	free(plaintext);
 	return 0;
 }
 
-void readfile(const char* filename) {
+void readFile(const char* filename, char* plaintext) {
 	FILE *fp = fopen(filename, "rb");
 	unsigned long size;
 
