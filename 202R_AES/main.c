@@ -2,6 +2,7 @@
 #define BLOCK_SIZE 16
 #define ROUND 9
 #include <stdio.h>
+#include <stdlib.h>
 #include "round.h"
 #include "key.h"
 #include "padding.h"
@@ -10,14 +11,18 @@ void readFile(const char*, char*);
 
 int main(int argc, char *argv[]) {
 	const char* key;
-	char* plaintext;
-	char* result;
+	char* plaintext = NULL;
+	char* result = NULL;
 	
-	if (argc != 3) 
-		perror("Usage: ./aes filename key");
+	if (argc != 3) {
+		printf("Usage: ./aes filename key");
+		exit(-1);
+	}
 	
-	if (sizeof(key) != 16 && sizeof(key) != 24 && sizeof(key) != 32) 
-		perror("AES Key length error");
+	if (sizeof(key) != 16 && sizeof(key) != 24 && sizeof(key) != 32) {
+		printf("AES Key length error");
+		exit(-1);
+	}
 	
 	key = argv[2];
 
@@ -36,7 +41,7 @@ void readFile(const char* filename, char* plaintext) {
 		perror("Error during opening file");
 
 	fseek(fp, 0, SEEK_END);
-	size = fteel(fp);
+	size = ftell(fp);
 	fseek(fp, 0, SEEK_SET);
 	
 	plaintext = (char *)malloc(fp + 1);
