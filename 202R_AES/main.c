@@ -1,6 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
-#define BLOCK_SIZE 16
 #define ROUND 9
+#ifndef BLOCK_SIZE
+#define BLOCK_SIZE 16
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "round.h"
