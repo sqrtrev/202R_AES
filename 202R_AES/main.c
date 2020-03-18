@@ -6,6 +6,7 @@ volatile char* plaintext;
 volatile char* result;
 void readfile(const char*);
 
+
 int main(int argc, char *argv[]) {
 	const char* key;
 	
