@@ -6,18 +6,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "round.h"
-#include "key.h"
+#include <time.h>
+#include "aes.h"
 #include "padding.h"
 
 void readFile(const char*, char*);
 
+// Todo: Make multithreading if enc file uses CBC or etc...
 int main(int argc, char *argv[]) {
+	clock_t start = clock();
+	clock_t end;
 	const char* key;
-	char* plaintext = NULL;
+	char* state = NULL;
 	char* result = NULL;
 
-	printf("%c", InvSubBytes('\x04')); // expected output is 0
+	printf("%c", InvSubBytes('\x12')); // expected output is 9
 	
 	/*
 	if (argc != 3) {
@@ -33,11 +36,14 @@ int main(int argc, char *argv[]) {
 	 Now in testing function
 	key = argv[2];
 
-	readFile(argv[1], plaintext);
+	readFile(argv[1], state);
 
 
-	free(plaintext);
+	free(state);
 	*/
+	end = clock();
+	printf("%lf ms\n",(double)(end - start) / CLOCKS_PER_SEC);
+
 	return 0;
 }
 
@@ -56,4 +62,5 @@ void readFile(const char* filename, char* plaintext) {
 	
 	plaintext = (char *)malloc(fp + 1);
 	fgets(plaintext, size, fp);
+	fclose(fp);
 }

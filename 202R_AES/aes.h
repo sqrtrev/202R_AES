@@ -3,9 +3,13 @@
 #endif
 
 char InvSubBytes(char);
-void keyExpansion(char*);
+void KeyExpansion(char*);
+void AddRoundKey();
+void ShiftRows();
+void MixColumn();
 
-void keyExpansion(char* dest) {
+
+void KeyExpansion(char* dest) {
 
 }
 
@@ -30,4 +34,9 @@ char InvSubBytes(char dest) {
 	};
 
 	return table[dest];
+}
+
+void ShiftRows(char* state) {
+	char tmp;
+
 }

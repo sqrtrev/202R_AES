@@ -20,13 +20,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="key.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="padding.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="round.h">
+    <ClInclude Include="aes.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

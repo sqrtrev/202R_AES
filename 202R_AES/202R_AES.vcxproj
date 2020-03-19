@@ -146,9 +146,8 @@
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="key.h" />
     <ClInclude Include="padding.h" />
-    <ClInclude Include="round.h" />
+    <ClInclude Include="aes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
